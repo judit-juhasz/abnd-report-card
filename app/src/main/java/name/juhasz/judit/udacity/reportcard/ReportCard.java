@@ -77,4 +77,12 @@ public class ReportCard {
         mCourseGrades.remove(index);
         return true;
     }
+
+    public String toString() {
+        String result = "";
+        for (int i = 0; i < mCourseTitles.size(); ++i) {
+            result = result + mCourseTitles.get(i) + ": " + mCourseGrades.get(i) + "\n";
+        }
+        return result;
+    }
 }
