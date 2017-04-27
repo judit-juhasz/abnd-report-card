@@ -10,21 +10,21 @@ public class ReportCard {
     public static final int GRADE_GOOD = 4;
     public static final int GRADE_EXCELLENT = 5;
 
-    private ArrayList<String> mCourseTitle;
-    private ArrayList<Integer> mCourseGrade;
+    private ArrayList<String> mCourseTitles;
+    private ArrayList<Integer> mCourseGrades;
 
     public ReportCard() {
-        mCourseTitle = new ArrayList<>();
-        mCourseGrade = new ArrayList<>();
+        mCourseTitles = new ArrayList<>();
+        mCourseGrades = new ArrayList<>();
     }
 
     public boolean addCourse(String title, int grade) {
         if (!isCourseTitleValid(title) || !isCourseGradeValid(grade) ||
-                mCourseTitle.contains(title)) {
+                mCourseTitles.contains(title)) {
             return false;
         }
-        mCourseTitle.add(title);
-        mCourseGrade.add(grade);
+        mCourseTitles.add(title);
+        mCourseGrades.add(grade);
         return true;
     }
 
@@ -38,7 +38,19 @@ public class ReportCard {
     }
 
     public int getGrade(String courseTitle) {
-        int index = mCourseTitle.indexOf(courseTitle);
-        return mCourseGrade.get(index);
+        int index = mCourseTitles.indexOf(courseTitle);
+        return mCourseGrades.get(index);
+    }
+
+    public double getAverageGrade() {
+        if (mCourseGrades.isEmpty()) {
+            return 0;
+        }
+
+        int sumOfGrades = 0;
+        for (int grade : mCourseGrades) {
+            sumOfGrades = sumOfGrades + grade;
+        }
+        return sumOfGrades / (double) mCourseGrades.size();
     }
 }
