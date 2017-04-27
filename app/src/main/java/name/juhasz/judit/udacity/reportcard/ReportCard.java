@@ -36,4 +36,9 @@ public class ReportCard {
         return GRADE_FAIL == grade || GRADE_PASS == grade || GRADE_SATISFACTORY == grade ||
                 GRADE_GOOD == grade || GRADE_EXCELLENT == grade;
     }
+
+    public int getGrade(String courseTitle) {
+        int index = mCourseTitle.indexOf(courseTitle);
+        return mCourseGrade.get(index);
+    }
 }
