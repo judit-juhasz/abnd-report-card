@@ -1,7 +1,6 @@
 package name.juhasz.judit.udacity.reportcard;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ReportCard {
 
@@ -29,30 +28,9 @@ public class ReportCard {
         return true;
     }
 
-    private boolean isCourseTitleValid(String title) {
-        return title != null && !title.isEmpty();
-    }
-
-    private boolean isCourseGradeValid(int grade){
-        return GRADE_FAIL == grade || GRADE_PASS == grade || GRADE_SATISFACTORY == grade ||
-                GRADE_GOOD == grade || GRADE_EXCELLENT == grade;
-    }
-
     public int getGrade(String courseTitle) {
         int index = mCourseTitles.indexOf(courseTitle);
         return mCourseGrades.get(index);
-    }
-
-    public double getAverageGrade() {
-        if (mCourseGrades.isEmpty()) {
-            return 0;
-        }
-
-        int sumOfGrades = 0;
-        for (int grade : mCourseGrades) {
-            sumOfGrades = sumOfGrades + grade;
-        }
-        return sumOfGrades / (double) mCourseGrades.size();
     }
 
     public boolean updateGrade(String courseTitle, int newGrade) {
@@ -78,11 +56,32 @@ public class ReportCard {
         return true;
     }
 
+    public double getAverageGrade() {
+        if (mCourseGrades.isEmpty()) {
+            return 0;
+        }
+
+        int sumOfGrades = 0;
+        for (int grade : mCourseGrades) {
+            sumOfGrades = sumOfGrades + grade;
+        }
+        return sumOfGrades / (double) mCourseGrades.size();
+    }
+
     public String toString() {
         String result = "";
         for (int i = 0; i < mCourseTitles.size(); ++i) {
             result = result + mCourseTitles.get(i) + ": " + mCourseGrades.get(i) + "\n";
         }
         return result;
+    }
+
+    private boolean isCourseTitleValid(String title) {
+        return title != null && !title.isEmpty();
+    }
+
+    private boolean isCourseGradeValid(int grade) {
+        return GRADE_FAIL == grade || GRADE_PASS == grade || GRADE_SATISFACTORY == grade ||
+                GRADE_GOOD == grade || GRADE_EXCELLENT == grade;
     }
 }
