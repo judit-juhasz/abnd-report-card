@@ -65,4 +65,16 @@ public class ReportCard {
         mCourseGrades.set(index, newGrade);
         return true;
     }
+
+    public boolean removeCourse(String title) {
+        int index = mCourseTitles.indexOf(title);
+
+        if (-1 == index) {
+            return false;
+        }
+
+        mCourseTitles.remove(index);
+        mCourseGrades.remove(index);
+        return true;
+    }
 }
