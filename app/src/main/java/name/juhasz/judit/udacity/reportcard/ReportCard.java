@@ -1,6 +1,7 @@
 package name.juhasz.judit.udacity.reportcard;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ReportCard {
 
@@ -52,5 +53,16 @@ public class ReportCard {
             sumOfGrades = sumOfGrades + grade;
         }
         return sumOfGrades / (double) mCourseGrades.size();
+    }
+
+    public boolean updateGrade(String courseTitle, int newGrade) {
+        int index = mCourseTitles.indexOf(courseTitle);
+
+        if (-1 == index || !isCourseGradeValid(newGrade)) {
+            return false;
+        }
+
+        mCourseGrades.set(index, newGrade);
+        return true;
     }
 }
