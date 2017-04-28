@@ -1,6 +1,7 @@
 package name.juhasz.judit.udacity.reportcard;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ReportCard {
 
@@ -26,6 +27,10 @@ public class ReportCard {
         mCourseTitles.add(title);
         mCourseGrades.add(grade);
         return true;
+    }
+
+    public List<String> getCourseTitles() {
+        return mCourseTitles;
     }
 
     public int getGrade(String courseTitle) {
